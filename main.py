@@ -36,12 +36,12 @@ async def media_filter(bot, update):
     )
     try:
         await message.edit_text(
-            text="`Downloading...`",
+            text="`📥 Baixando...`",
             disable_web_page_preview=True
         )
         media = await update.download()
         await message.edit_text(
-            text="`Uploading...`",
+            text="`📤 Upando o Arquivo...`",
             disable_web_page_preview=True
         )
         response = pixeldrain.upload_file(media)
@@ -52,12 +52,12 @@ async def media_filter(bot, update):
         except:
             pass
         await message.edit_text(
-            text="`Uploaded Successfully!`",
+            text="`Arquivo Upado com Sucesso! ✔️`",
             disable_web_page_preview=True
         )
         if data["success"] is False:
             await message.edit_text(
-                text=f"**Error {status_code}:-** `I can't fetch information of your file.`",
+                text=f"**Error {status_code}:-** Não Consegui Buscar Informacções Sobre o Seu Arquivo, Desculpe...`",
                 disable_web_page_preview=True
             )
             return
@@ -80,16 +80,16 @@ async def media_filter(bot, update):
         [
             [
                 InlineKeyboardButton(
-                    text="Open Link",
+                    text="Abrir LInk",
                     url=f"https://pixeldrain.com/api/file/{data['id']}"
                 ),
                 InlineKeyboardButton(
-                    text="Share Link",
+                    text="Compartilhar Link",
                     url=f"https://telegram.me/share/url?url=https://pixeldrain.com/api/file/{data['id']}"
                 )
             ],
             [
-                InlineKeyboardButton(text="Join Updates Channel", url="https://telegram.me/FayasNoushad")
+                InlineKeyboardButton(text="Canal de Atualizações", url="https://telegram.me/BotsTelegramBrasil")
             ]
         ]
     )
